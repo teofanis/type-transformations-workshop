@@ -7,8 +7,10 @@ interface Example {
   organisationId: string;
   groupId: string;
 }
-
-type OnlyIdKeys<T> = unknown;
+type ValidIds = `${string}${'id' | 'Id'}${string}`
+type OnlyIdKeys<T> ={
+  [K in keyof T as K extends ValidIds ? K : never]: T[K]
+}
 
 type tests = [
   Expect<
