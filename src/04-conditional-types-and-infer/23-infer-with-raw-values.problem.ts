@@ -1,6 +1,11 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type GetDataValue<T> = unknown;
+// type Data<T> = {
+//   data: T
+// }
+// type GetDataValue<T> = T extends Data<infer T> ? T : never
+
+type GetDataValue<T> = T extends { data: infer TData } ? TData : never
 
 type tests = [
   Expect<Equal<GetDataValue<{ data: "hello" }>, "hello">>,
