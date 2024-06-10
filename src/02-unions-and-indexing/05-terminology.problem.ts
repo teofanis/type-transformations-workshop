@@ -30,4 +30,8 @@ enum C {
   C = "c",
 }
 
+// A - discriminated union
+// B - union
+// C - enum
+
 export {};
